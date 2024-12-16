@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beauté</title>
+     <!-- favicon -->
+  <link rel="icon" type="image/png" href="icon.png">
+  <meta name="description" content="Portfolio de Iara Pais Paiva, designer graphique.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1><img id="logo" src="logo.svg" alt="iarapaispaiva" width="50" height="50"></h1>    
+        <a href="index.html" class="title">I<span>ARA</span>P<span>AIS</span>P<span>AIVA</span></a> 
+        <i class="mode-tog" id="toggleD">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+            <defs>
+              <clipPath id="clip-path">
+                <path id="Tracé_16" data-name="Tracé 16" d="M0-3.46H20v-20H0Z" transform="translate(0 23.46)" fill="none"/>
+              </clipPath>
+            </defs>
+            <g id="Groupe_48" data-name="Groupe 48" transform="translate(0 38.46)">
+              <g id="Groupe_19" data-name="Groupe 19" transform="translate(0 -38.46)" clip-path="url(#clip-path)">
+                <g id="Groupe_18" data-name="Groupe 18">
+                  <path id="Tracé_15" data-name="Tracé 15" d="M-1.73-3.46a10.031,10.031,0,0,1-10-10,10.015,10.015,0,0,1,10-10,10,10,0,0,1,10,10,10.015,10.015,0,0,1-10,10m0-18.951a8.978,8.978,0,0,0-8.951,8.951A8.994,8.994,0,0,0-1.73-4.509Z" transform="translate(11.73 23.46)" fill="var(--black)"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </i>
+      </header>
+    
+    <div class="page-projet"></div>
+    <div class="description"></div>
+    <p class="custom-font">
+      Pour moi la beauté naturelle est dans chaque recoin et dans chaque personne.
+      Pour ça j’ai créé une affiche particulière qui laisse apparaitre le réel. J’ai également gravé la courbe
+      du nombre d’or, qui fait écho non seulement aux proportions utilisées dans mes formats mais
+      également à la perfection des visages, des corps de ma série. Ma démarche a été de me confronter à la beauté du réel. 
+      Tout au long de mon processus le travail d’Anna Herrgott ou encore celui Alessio Borando ont été des références.    </p>
+
+    <!-- Conteneur des images -->
+    <div class="image-container">
+        <img src="beautenaturelle1.jpg" alt="Beauté">
+        <img src="beautenaturelle2.jpg" alt="Beauté">
+        <img src="beautenaturelle3.jpg" alt="Beauté">
+        <img src="beautenaturelle4.jpg" alt="Beauté">
+        <img src="beautenaturelle5.jpg" alt="Beauté">
+        <img src="beautenaturelle6.jpg" alt="Beauté">
+        <img src="beautenaturelle7.jpg" alt="Beauté">
+        <img src="beautenaturelle8.jpg" alt="Beauté">
+    </div>
+        <!-- Gestion du mode sombre -->
+        <script>
+            const toggleButton = document.getElementById('toggleD');
+            if (localStorage.getItem('darkMode') === 'true') {
+              document.body.classList.add('dark-mode');
+              const svgPath = toggleButton.querySelector('path');
+              svgPath.setAttribute('fill', 'white');
+            }
+      
+            toggleButton.addEventListener('click', () => {
+              document.body.classList.toggle('dark-mode');
+              const isDarkMode = document.body.classList.contains('dark-mode');
+              const svgPath = toggleButton.querySelector('path');
+              svgPath.setAttribute('fill', isDarkMode ? 'white' : 'black');
+              localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+            });
+          </script>
+</body>
+</html>

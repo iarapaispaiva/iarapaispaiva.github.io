@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors</title>
+     <!-- favicon -->
+  <link rel="icon" type="image/png" href="icon.png">
+  <meta name="description" content="Portfolio de Iara Pais Paiva, designer graphique.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1><img id="logo" src="logo.svg" alt="iarapaispaiva" width="50" height="50"></h1>    
+        <a href="index.html" class="title">I<span>ARA</span>P<span>AIS</span>P<span>AIVA</span></a> 
+        <i class="mode-tog" id="toggleD">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+            <defs>
+              <clipPath id="clip-path">
+                <path id="Tracé_16" data-name="Tracé 16" d="M0-3.46H20v-20H0Z" transform="translate(0 23.46)" fill="none"/>
+              </clipPath>
+            </defs>
+            <g id="Groupe_48" data-name="Groupe 48" transform="translate(0 38.46)">
+              <g id="Groupe_19" data-name="Groupe 19" transform="translate(0 -38.46)" clip-path="url(#clip-path)">
+                <g id="Groupe_18" data-name="Groupe 18">
+                  <path id="Tracé_15" data-name="Tracé 15" d="M-1.73-3.46a10.031,10.031,0,0,1-10-10,10.015,10.015,0,0,1,10-10,10,10,0,0,1,10,10,10.015,10.015,0,0,1-10,10m0-18.951a8.978,8.978,0,0,0-8.951,8.951A8.994,8.994,0,0,0-1.73-4.509Z" transform="translate(11.73 23.46)" fill="var(--black)"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </i>
+      </header>
+    
+    <div class="page-projet"></div>
+    <div class="description"></div>
+    <p class="custom-font">
+     Série d’affiches pour l’exposition sur la couleur de l’ésad Orléans. Les teintes
+     sont issues du livre La Palette parfaite de Sara Caldas, qui contient 288 pages,
+     paru en 2022.
+    </p>
+
+    <!-- Conteneur des images -->
+    <figure class="xl">
+    <div class="image-container">
+        <img src="colors1.jpg" alt="colors">
+        <img src="colors2.jpg" alt="colors">
+        <img src="colors3.jpg" alt="colors">
+        <img src="colors4.jpg" alt="colors">
+        </figure>
+        <img src="colors5.jpg" alt="colors">
+    </div>
+        <!-- Gestion du mode sombre -->
+        <script>
+            const toggleButton = document.getElementById('toggleD');
+            if (localStorage.getItem('darkMode') === 'true') {
+              document.body.classList.add('dark-mode');
+              const svgPath = toggleButton.querySelector('path');
+              svgPath.setAttribute('fill', 'white');
+            }
+      
+            toggleButton.addEventListener('click', () => {
+              document.body.classList.toggle('dark-mode');
+              const isDarkMode = document.body.classList.contains('dark-mode');
+              const svgPath = toggleButton.querySelector('path');
+              svgPath.setAttribute('fill', isDarkMode ? 'white' : 'black');
+              localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+            });
+          </script>
+</body>
+</html>

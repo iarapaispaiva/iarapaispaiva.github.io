@@ -1,1 +1,196 @@
-site en construction
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iarapaispaiva</title>
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="icon.png">
+  <meta name="description" content="Portfolio de Iara Pais Paiva, designer graphique.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stretched-text-container">
+    <span class="stretched-text">IARAPAISPAIVA</span>
+  </div>
+  <header class="header">
+    <h1><img id="logo" src="logo.svg" alt="iarapaispaiva" width="50" height="50"></h1>    
+    <a href="index.html" class="title">I<span>ARA</span>P<span>AIS</span>P<span>AIVA</span></a> 
+    <i class="mode-tog" id="toggleD">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+        <defs>
+          <clipPath id="clip-path">
+            <path id="Tracé_16" data-name="Tracé 16" d="M0-3.46H20v-20H0Z" transform="translate(0 23.46)" fill="none"/>
+          </clipPath>
+        </defs>
+        <g id="Groupe_48" data-name="Groupe 48" transform="translate(0 38.46)">
+          <g id="Groupe_19" data-name="Groupe 19" transform="translate(0 -38.46)" clip-path="url(#clip-path)">
+            <g id="Groupe_18" data-name="Groupe 18">
+              <path id="Tracé_15" data-name="Tracé 15" d="M-1.73-3.46a10.031,10.031,0,0,1-10-10,10.015,10.015,0,0,1,10-10,10,10,0,0,1,10,10,10.015,10.015,0,0,1-10,10m0-18.951a8.978,8.978,0,0,0-8.951,8.951A8.994,8.994,0,0,0-1.73-4.509Z" transform="translate(11.73 23.46)" fill="var(--black)"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </i>
+  </header>
+
+  <div class="grid-container">
+    <!-- Génération des cellules de la grille -->
+  <a href="popcorn.html" class="cell" data-preview="popcorn1.jpg" data-name="Popcorn"></a>
+  <a href="beaute.html" class="cell" data-preview="beautenaturelle1.jpg" data-name="Beauté"></a>
+  <a href="colors.html" class="cell" data-preview="colors1.jpg" data-name="Colors"></a>
+  <a href="basquiat.html" class="cell" data-preview="livre1.jpg" data-name="Basquiat"></a>
+  <a href="flowers.html" class="cell" data-preview="PAO.jpg" data-name="Flowers"></a>
+  <a href="branly.html" class="cell" data-preview="photo1.jpg" data-name="Branly"></a>
+  <a href="point1.html" class="cell" data-preview="point1.jpg" data-name="Point.1"></a>
+  <a href="typo.html" class="cell" data-preview="typo1.jpg" data-name="Typo"></a>
+  <a href="valentin.html" class="cell" data-preview="valentin1.jpg" data-name="Valentin"></a>
+</div>
+
+  <!-- Conteneur pour l'aperçu -->
+<div id="preview-container" style="position: absolute; display: none;">
+  <img id="preview-image" src="" alt="Aperçu du projet" style="max-width: 200px; max-height: 200px; width: auto; height: auto;">
+</div>
+
+
+<footer>
+  <div>
+    <div class="p-footer">CONTACT</div> 
+    <br>
+    <a href="mailto:iarapaispaiva@hotmailcom" class="email-link">Mail</a>
+</div>
+
+<div>
+    <div class="p-footer">SUIVRE</div> 
+    <br>
+    <a href="https://www.instagram.com/paispaivaiara/">Instagram</a>
+</div>
+
+<div>
+    <div class="p-footer">INFOS</div> 
+    <br>
+    <a href="a-propos.html">à propos</a>
+</div>
+</footer>
+
+  <!-- JavaScript pour l'effet lumineux et l'aperçu -->
+    <script>
+      const cells = document.querySelectorAll('.cell');
+      const previewContainer = document.getElementById('preview-container');
+      const previewImage = document.getElementById('preview-image');
+      let intervalId;
+
+      // Effet d'éclairage aléatoire
+      function randomLightEffect() {
+        cells.forEach(cell => cell.classList.remove('active'));
+        const randomIndex = Math.floor(Math.random() * cells.length);
+        cells[randomIndex].classList.add('active');
+      }
+
+      function startRandomEffect() {
+        intervalId = setInterval(randomLightEffect, 500);
+      }
+
+      function stopRandomEffect() {
+        clearInterval(intervalId);
+        cells.forEach(cell => cell.classList.remove('active'));
+      }
+
+      startRandomEffect();
+
+      // Gestion de l'aperçu au survol
+      cells.forEach(cell => {
+        cell.addEventListener('mouseover', (e) => {
+          stopRandomEffect();
+          cell.classList.add('active');
+
+          const previewSrc = cell.getAttribute('data-preview');
+          if (previewSrc) {
+            previewImage.src = previewSrc;
+            previewContainer.style.display = 'block';
+          }
+        });
+
+        cell.addEventListener('mousemove', (e) => {
+          previewContainer.style.left = e.pageX + 10 + 'px';
+          previewContainer.style.top = e.pageY + 10 + 'px';
+        });
+
+        cell.addEventListener('mouseout', () => {
+          previewContainer.style.display = 'none';
+          cell.classList.remove('active');
+          startRandomEffect();
+        });
+
+        cell.addEventListener('click', () => {
+          const url = `page${Array.from(cells).indexOf(cell) + 1}.html`;
+          window.location.href = url;
+        });
+      });
+    </script>
+
+    <!-- Gestion du défilement pour l'effet étiré du texte -->
+    <script>
+      window.addEventListener('scroll', function() {
+        const stretchedText = document.querySelector('.stretched-text');
+        const scrollPosition = window.scrollY;
+        let stretchFactor = 5 - scrollPosition / 150;
+        if (stretchFactor < 1) {
+          stretchFactor = 1;
+        }
+        stretchedText.style.transform = `scaleY(${stretchFactor})`;
+      });
+    </script>
+
+    <!-- Gestion du mode sombre -->
+    <script>
+      const toggleButton = document.getElementById('toggleD');
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        const svgPath = toggleButton.querySelector('path');
+        svgPath.setAttribute('fill', 'white');
+      }
+
+      toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        const svgPath = toggleButton.querySelector('path');
+        svgPath.setAttribute('fill', isDarkMode ? 'white' : 'black');
+        localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+      });
+    </script>
+
+<script>
+  // Sélectionne le texte "IARAPAISPAIVA"
+  const centeredText = document.querySelector('.centered-text');
+
+  function updateTextColor() {
+    // Récupère la couleur de fond de la cellule sous le texte
+    const cellUnderText = document.elementFromPoint(centeredText.getBoundingClientRect().left, centeredText.getBoundingClientRect().top);
+    const bgColor = window.getComputedStyle(cellUnderText).backgroundColor;
+
+    // Applique la classe en fonction de la couleur de fond
+    if (bgColor === 'rgb(0, 0, 0)') { // Fond noir
+      centeredText.classList.add('light-text');
+    } else { // Fond blanc
+      centeredText.classList.remove('light-text');
+    }
+  }
+
+  // Appelle la fonction quand la page est chargée et lors du défilement
+  window.addEventListener('scroll', updateTextColor);
+  window.addEventListener('resize', updateTextColor);
+  document.addEventListener('DOMContentLoaded', updateTextColor);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
